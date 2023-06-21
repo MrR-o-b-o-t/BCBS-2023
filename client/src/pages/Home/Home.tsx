@@ -8,6 +8,8 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 interface User {
   id: number;
@@ -42,6 +44,15 @@ export default function Home(): JSX.Element {
     setCurrentPage(pageNumber);
   };
 
+  const deleteUser = async (id: number): Promise<void> => {
+    try {
+      await axios.delete(`https://reqres.in/api/users/${id}`);
+      setUsers(users.filter((user: User) => user.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Container className="">
       <div>
@@ -63,6 +74,12 @@ export default function Home(): JSX.Element {
                   <Card.Title>
                     {user.first_name} {user.last_name}
                   </Card.Title>
+                  <Button
+                    variant="danger"
+                    onClick={() => deleteUser(user.id)}
+                  >
+                    Delete
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 
-router.post("/addUser", async (req, res) => {
+router.post("/", async (req, res) => {
   const { name, job } = req.body;
   console.log(req.body);
   try {

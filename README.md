@@ -55,8 +55,10 @@ npm install</code></pre>
     <li>Start the development server:</li>
   </ol>
 
-  <pre><code>cd server 
+  <pre><code>
+    cd server 
     npm run dev
+    cd ..
     cd client
     npm run dev
   </code></pre>

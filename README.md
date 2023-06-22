@@ -57,10 +57,10 @@ npm install</code></pre>
 
   <pre><code>
     cd server 
-    npm run dev
+    npm run start
     cd ..
     cd client
-    npm run dev
+    npm run start
   </code></pre>
 
   <ol start="6">

@@ -44,6 +44,10 @@ export default function Home(): JSX.Element {
     setCurrentPage(pageNumber);
   };
 
+  const addUserCallback = (newUser: User): void => {
+    setUsers([...users, newUser]);
+  };
+
   const deleteUser = async (id: number): Promise<void> => {
     try {
       await axios.delete(`https://reqres.in/api/users/${id}`);
@@ -57,7 +61,7 @@ export default function Home(): JSX.Element {
     <Container className="">
       <div>
         <h2>Add New User</h2>
-        <AddUsers />
+        <AddUsers addUserCallback={addUserCallback}/>
       </div>
       <div className="mt-3">
         <Row xs={1} md={2} className="g-4">

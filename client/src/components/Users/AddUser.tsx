@@ -1,73 +1,77 @@
+// AddUser.tsx
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios, { AxiosResponse } from "axios";
 
 interface AddUsersProps {
-  
+  addUserCallback: (newUser: User) => void;
 }
 
 interface User {
-  name: string;
-  job: string;
+  id: number;
+  first_name: string;
+  last_name: string;
+  avatar: string;
 }
 
-const AddUsers: React.FC<AddUsersProps> = () => {
-  const [name, setName] = useState("");
-  const [job, setJob] = useState("");
+const AddUsers: React.FC<AddUsersProps> = ({ addUserCallback }) => {
+  const [user, setUser] = useState<User>({
+    id: 0,
+    first_name: "",
+    last_name: "",
+    avatar: "",
+  });
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({ ...prevUser, [name]: value }));
+  };
 
+  const handleSubmit = async (event: FormEvent): Promise<void> => {
+    event.preventDefault();
     try {
-      const response: AxiosResponse<User> = await axios.post("/addUser", {
-        name,
-        job,
-      });
-
+      const response: AxiosResponse<User> = await axios.post(
+        "https://reqres.in/api/users",
+        user
+      );
       const newUser: User = response.data;
-
-      console.log("New User:", newUser);
-
-      setName("");
-      setJob("");
+      addUserCallback(newUser); // Notify Home component to add the user
+      setUser({
+        id: 0,
+        first_name: "",
+        last_name: "",
+        avatar: "",
+      });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  const handleJobChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setJob(e.target.value);
-  };
-
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="name">
+      <Form.Group className="mb-3">
         <Form.Label>First Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="First Name"
-          value={name}
-          onChange={handleNameChange}
+          name="first_name"
+          value={user.first_name}
+          onChange={handleChange}
+          required
         />
       </Form.Group>
-
-      <Form.Group className="mb-3" controlId="jobTitle">
-        <Form.Label>Job Title</Form.Label>
+      <Form.Group className="mb-3">
+        <Form.Label>Last Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Job Title"
-          value={job}
-          onChange={handleJobChange}
+          name="last_name"
+          value={user.last_name}
+          onChange={handleChange}
+          required
         />
       </Form.Group>
-
       <Button variant="primary" type="submit">
-        Submit
+        Add User
       </Button>
     </Form>
   );

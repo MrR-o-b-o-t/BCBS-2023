@@ -41,7 +41,8 @@
     <li>Install the dependencies for the server:</li>
   </ol>
 
-  <pre><code>npm install</code></pre>
+  <pre><code>cd server
+npm install</code></pre>
 
   <ol start="4">
     <li>Install the dependencies for the client:</li>

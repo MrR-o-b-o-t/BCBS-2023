@@ -101,5 +101,13 @@ npm install</code></pre>
   <h2>License</h2>
 
   <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
+
+  <h2>Future features</h2>
+    <ol>
+    <li>Update application to store avatar files locally and match returned api cards.</li>
+    <li>Add client-side authentication for optimization and usability.</li>
+    <li>Add authentication to "deleteUser" functionality.</li>
+    <li>Add unit testing.</li>
+  </ol>
 </body>
 </html>

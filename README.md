@@ -1,37 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BCBS Application</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    h1 {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    p {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    code {
-      background-color: #f4f4f4;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      font-family: Consolas, monospace;
-    }
-  </style>
 </head>
 <body>
   <h1>BCBS Application</h1>

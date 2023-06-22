@@ -67,6 +67,14 @@ npm install</code></pre>
     <li>Open your browser and visit <a href="http://localhost:3000">http://localhost:3000</a> to access the application.</li>
   </ol>
 
+  <ol start="7">
+    <li>Login details:</li>
+    <li>{
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+}</li>
+  </ol>
+
   <h2>API Routes</h2>
 
   <ul>

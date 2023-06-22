@@ -68,11 +68,13 @@ npm install</code></pre>
   </ol>
 
   <ol start="7">
-    <li>Login details:</li>
-    <li>{
+    <li>Login details:
+    {
     "email": "eve.holt@reqres.in",
     "password": "cityslicka"
-}</li>
+}
+    </li>
+
   </ol>
 
   <h2>API Routes</h2>

@@ -55,7 +55,11 @@ npm install</code></pre>
     <li>Start the development server:</li>
   </ol>
 
-  <pre><code>npm run dev</code></pre>
+  <pre><code>cd server 
+    npm run dev
+    cd client
+    npm run dev
+  </code></pre>
 
   <ol start="6">
     <li>Open your browser and visit <a href="http://localhost:3000">http://localhost:3000</a> to access the application.</li>

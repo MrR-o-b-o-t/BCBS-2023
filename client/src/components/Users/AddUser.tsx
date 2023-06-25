@@ -3,10 +3,12 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios, { AxiosResponse } from "axios";
+import { useForm } from "react-hook-form";
 
 interface AddUsersProps {
   addUserCallback: (newUser: User) => void;
 }
+
 
 interface User {
   id: number;
@@ -16,6 +18,7 @@ interface User {
 }
 
 const AddUsers: React.FC<AddUsersProps> = ({ addUserCallback }) => {
+  
   const [user, setUser] = useState<User>({
     id: 0,
     first_name: "",
@@ -66,6 +69,16 @@ const AddUsers: React.FC<AddUsersProps> = ({ addUserCallback }) => {
           type="text"
           name="last_name"
           value={user.last_name}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Avatar URL</Form.Label>
+        <Form.Control
+          type="text"
+          name="avatar"
+          value={user.avatar}
           onChange={handleChange}
           required
         />

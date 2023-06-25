@@ -50,7 +50,9 @@ export default function Home(): JSX.Element {
 
   const deleteUser = async (id: number): Promise<void> => {
     try {
-      await axios.delete(`https://reqres.in/api/users/${id}`);
+      console.log(id)
+      const res = await axios.delete(`/deleteUser/${id}`);
+      console.log(res)
       setUsers(users.filter((user: User) => user.id !== id));
     } catch (error) {
       console.error(error);
@@ -63,7 +65,7 @@ export default function Home(): JSX.Element {
         <h2>Add New User</h2>
         <AddUsers addUserCallback={addUserCallback}/>
       </div>
-      <div className="mt-3">
+      <div className="mt-3 text-center">
         <Row xs={1} md={2} className="g-4">
           {currentUsers.map((user: User) => (
             <Col key={user.id}>
